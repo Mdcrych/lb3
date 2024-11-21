@@ -250,6 +250,7 @@ int main() {
             IT.addEmployee(&Sidorov);
             printAllEmployeesInDepartment(&Kozlov);
             }
+            break;
 
         case 4:
             {
