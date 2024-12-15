@@ -33,8 +33,27 @@ public:
     std::string getMiddleName() {
         return middleName;
     }
+    std::string toString1() {
+    std::string fullName = "";
 
-    std::string toString() {
+    if (!lastName.empty()) {
+        fullName += lastName;
+    }
+    if (!firstName.empty()) {
+        if (!fullName.empty()) {
+            fullName += " ";
+        }
+        fullName += firstName;
+    }
+    if (!middleName.empty()) {
+        if (!fullName.empty()) {
+            fullName += " ";
+        }
+        fullName += middleName;
+    }
+    return fullName;
+}
+    std::string toString4() {
     std::string fullName = "";
 
     if (!firstName.empty()) {
@@ -220,18 +239,18 @@ int main() {
         {
             Name cleopatra;
             cleopatra.setFirstName("Клеопатра");
-            std::cout << cleopatra.toString() << std::endl;
+            std::cout << cleopatra.toString1() << std::endl;
 
             Name pushkin;
             pushkin.setLastName("Пушкин");
             pushkin.setFirstName("Александр");
             pushkin.setMiddleName("Сергеевич");
-            std::cout <<  pushkin.toString() << std::endl;
+            std::cout <<  pushkin.toString1() << std::endl;
 
             Name mayakovsky;
             mayakovsky.setLastName("Маяковский");
             mayakovsky.setFirstName("Владимир");
-            std::cout << mayakovsky.toString() << std::endl;
+            std::cout << mayakovsky.toString1() << std::endl;
         }      
         
             break;
@@ -267,23 +286,23 @@ int main() {
             {
             Name cleopatra;
             cleopatra.setFirstName("Клеопатра");
-            std::cout << cleopatra.toString() << std::endl;
+            std::cout << cleopatra.toString4() << std::endl;
 
             Name pushkin;
             pushkin.setLastName("Пушкин");
             pushkin.setFirstName("Александр");
             pushkin.setMiddleName("Сергеевич");
-            std::cout <<  pushkin.toString() << std::endl;
+            std::cout <<  pushkin.toString4() << std::endl;
 
             Name mayakovsky;
             mayakovsky.setLastName("Маяковский");
             mayakovsky.setFirstName("Владимир");
-            std::cout << mayakovsky.toString() << std::endl;
+            std::cout << mayakovsky.toString4() << std::endl;
             
             Name christophor;
             christophor.setFirstName("Христофор");
             christophor.setLastName("Бонифатьевич");
-            std::cout << christophor.toString() << std::endl;
+            std::cout << christophor.toString4() << std::endl;
             }
             break;
 
@@ -316,4 +335,3 @@ int main() {
     }
     return 0;
 }
-
