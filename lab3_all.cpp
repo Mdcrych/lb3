@@ -4,28 +4,58 @@
 #include <sstream>
 
 class Name {
-  private:
-  std::string surname;
-  std::string firstName;
-  std::string patronymic;
-  public:
-  Name(std::string sur, std::string first, std::string pat):
-  surname(sur), firstName(first), patronymic(pat) {}
-  std::string toString() {
-    std::string result = "";
-    if (!surname.empty()) {
-        result += surname;
+private:
+    std::string lastName;
+    std::string firstName;
+    std::string middleName;
+
+public:
+    void setLastName(std::string ln) {
+        lastName = ln;
     }
+
+    std::string getLastName() {
+        return lastName;
+    }
+
+    void setFirstName(std::string fn) {
+        firstName = fn;
+    }
+
+    std::string getFirstName() {
+        return firstName;
+    }
+
+    void setMiddleName(std::string mn) {
+        middleName = mn;
+    }
+
+    std::string getMiddleName() {
+        return middleName;
+    }
+
+    std::string toString() {
+    std::string fullName = "";
+
     if (!firstName.empty()) {
-        if (!result.empty()) result += " ";
-        result += firstName;
+        fullName += firstName;
     }
-    if (!patronymic.empty()) {
-        if (!result.empty()) result += " ";
-        result += patronymic;
+    if (!middleName.empty()) {
+        if (!fullName.empty()) {
+            fullName += " ";
+        }
+        fullName += middleName;
     }
-    return result;}
+    if (!lastName.empty()) {
+        if (!fullName.empty()) {
+            fullName += " ";
+        }
+        fullName += lastName;
+    }
+    return fullName;
+}
 };
+
 
 class House{
     private:
@@ -188,27 +218,21 @@ int main() {
     {
         case 1:
         {
-            Name name1("", "Клеопатра", ""); 
-            Name name2("Пушкин", "Александр", "Сергеевич");
-            Name name3("Маяковский", "Владимир", "");
-            std::cout << "Имя 1: " << name1.toString() << std::endl;
-            std::cout << "Имя 2: " << name2.toString() << std::endl;
-            std::cout << "Имя 3: " << name3.toString() << std::endl;
-            //int n =1;
-            //std::cout<< "введите количество имен"<<std::endl;
-            //std::cin >> n;
-            //std::cin.ignore();
-            //for(int i=1; i<=n; i++){
-                //std::string sur,first,pat;
-                //std::cout << "Введите фамилию: ";
-                //std::getline(std::cin, sur);
-                //std::cout << "Введите имя: ";
-                //std::getline(std::cin, first);
-                //std::cout << "Введите отчество: ";
-                //std::getline(std::cin, pat);
-                //Name name(sur,first,pat);
-                //std::cout << "Имя " << i << ": " << name.toString() << std::endl;
-            }      
+            Name cleopatra;
+            cleopatra.setFirstName("Клеопатра");
+            std::cout << cleopatra.toString() << std::endl;
+
+            Name pushkin;
+            pushkin.setLastName("Пушкин");
+            pushkin.setFirstName("Александр");
+            pushkin.setMiddleName("Сергеевич");
+            std::cout <<  pushkin.toString() << std::endl;
+
+            Name mayakovsky;
+            mayakovsky.setLastName("Маяковский");
+            mayakovsky.setFirstName("Владимир");
+            std::cout << mayakovsky.toString() << std::endl;
+        }      
         
             break;
         
@@ -239,29 +263,27 @@ int main() {
         }
             break;
 
-        case 6:
-            {
-            Employee Petrov("Петров");
-            Employee Kozlov("Козлов");
-            Employee Sidorov("Сидоров");
-            Department IT("IT", &Kozlov);
-            IT.addEmployee(&Kozlov);
-            IT.addEmployee(&Petrov);
-            IT.addEmployee(&Sidorov);
-            printAllEmployeesInDepartment(&Kozlov);
-            }
-            break;
-
         case 4:
             {
-            Name name1("", "Клеопатра", "" ); 
-            Name name2("Пушкин", "Александр", "Сергеевич");
-            Name name3("Маяковский", "Владимир", "");
-            Name name4("Христофор", "Бонифатьевич", "" );
-            std::cout << "Имя 1: " << name1.toString() << std::endl;
-            std::cout << "Имя 2: " << name2.toString() << std::endl;
-            std::cout << "Имя 3: " << name3.toString() << std::endl;
-            std::cout << "Имя 4: " << name4.toString() << std::endl;
+            Name cleopatra;
+            cleopatra.setFirstName("Клеопатра");
+            std::cout << cleopatra.toString() << std::endl;
+
+            Name pushkin;
+            pushkin.setLastName("Пушкин");
+            pushkin.setFirstName("Александр");
+            pushkin.setMiddleName("Сергеевич");
+            std::cout <<  pushkin.toString() << std::endl;
+
+            Name mayakovsky;
+            mayakovsky.setLastName("Маяковский");
+            mayakovsky.setFirstName("Владимир");
+            std::cout << mayakovsky.toString() << std::endl;
+            
+            Name christophor;
+            christophor.setFirstName("Христофор");
+            christophor.setLastName("Бонифатьевич");
+            std::cout << christophor.toString() << std::endl;
             }
             break;
 
@@ -276,6 +298,19 @@ int main() {
             std::cout << f1.getString() << " / " << f2.getString() << " = " << f1.divide(f2).getString() << std::endl;
             Fraction result = f1.add(f2).divide(f3).subtract(5);
             std::cout << "((" << f1.getString() << " + " << f2.getString() << ") / " << f3.getString() << ") - 5 = " << result.getString() << std::endl;
+            }
+            break;
+        
+        case 6:
+            {
+            Employee Petrov("Петров");
+            Employee Kozlov("Козлов");
+            Employee Sidorov("Сидоров");
+            Department IT("IT", &Kozlov);
+            IT.addEmployee(&Kozlov);
+            IT.addEmployee(&Petrov);
+            IT.addEmployee(&Sidorov);
+            printAllEmployeesInDepartment(&Kozlov);
             }
             break;
     }
